@@ -1,9 +1,12 @@
 ###
+GET http://localhost:3000/tampilkanlomba
+
+###
 POST http://localhost:3000/tambahlomba
 Content-Type: application/json
 
 {
-  "nama": "Lomba Cyber Nasional",
+  "nama": "Lomba Web Development Nasional",
   "penyelenggara": "Kominfo",
   "deadline": "15 September 2024",
   "pendaftaran": "berbayar",
@@ -13,3 +16,6 @@ Content-Type: application/json
   "poster": "lomba.png",
   "deskripsi": "Lomba Cyber Nasional, hanya untuk Mahasiswa se-Indonesia"
 }
+
+###
+DELETE http://localhost:3000/hapus/66de93425d580543b8c34fa5
