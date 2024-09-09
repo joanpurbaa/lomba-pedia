@@ -19,7 +19,7 @@ model lomba {
   penyelenggara String
   deadline String
   pendaftaran String
-  tingkat String
+  tingkat String?
   kategori String
   peserta String
   poster String

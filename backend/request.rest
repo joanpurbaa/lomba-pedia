@@ -6,16 +6,16 @@ POST http://localhost:3000/tambahlomba
 Content-Type: application/json
 
 {
-  "nama": "Lomba Web Development Nasional",
-  "penyelenggara": "Kominfo",
-  "deadline": "15 September 2024",
-  "pendaftaran": "berbayar",
-  "tingkat": "Nasional",
-  "kategori": "Cyber Security",
-  "peserta": "Mahasiswa",
-  "poster": "lomba.png",
-  "deskripsi": "Lomba Cyber Nasional, hanya untuk Mahasiswa se-Indonesia"
+  "nama": "Lomba Cipta Puisi",
+  "penyelenggara": "Fakultas Ekonomi Dan Bisnis Islam UIN Alauddin Makassar",
+  "deadline": "25 November 2018",
+  "pendaftaran": "gratis",
+  "tingkat": "",
+  "kategori": "Puisi",
+  "peserta": "SMA Sederajat",
+  "poster": "lombaPuisi.jpg",
+  "deskripsi": "Lomba cipta puisi festifal ekonomi 2018"
 }
 
 ###
-DELETE http://localhost:3000/hapus/66de93425d580543b8c34fa5
+DELETE http://localhost:3000/hapus/66dece6ee17a1c4498bca8f1
