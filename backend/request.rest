@@ -1,0 +1,15 @@
+###
+POST http://localhost:3000/tambahlomba
+Content-Type: application/json
+
+{
+  "nama": "Lomba Cyber Nasional",
+  "penyelenggara": "Kominfo",
+  "deadline": "15 September 2024",
+  "pendaftaran": "berbayar",
+  "tingkat": "Nasional",
+  "kategori": "Cyber Security",
+  "peserta": "Mahasiswa",
+  "poster": "lomba.png",
+  "deskripsi": "Lomba Cyber Nasional, hanya untuk Mahasiswa se-Indonesia"
+}
