@@ -12,6 +12,18 @@ export const tampilkanLomba = async (req, res) => {
   }
 };
 
+export const tampilkanLombaById = async (req, res) => {
+  try {
+    const result = await prisma.lomba.findMany({
+      where: { id: req.params.lombaid },
+    });
+
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const tambahLomba = async (req, res) => {
   try {
     await prisma.lomba.create({
@@ -24,7 +36,7 @@ export const tambahLomba = async (req, res) => {
         kategori: req.body.kategori,
         peserta: req.body.peserta,
         poster: req.body.poster,
-        deskripsi: req.body.deskripsi,
+        deskripsi: JSON.stringify(req.body.deskripsi),
       },
     });
 
@@ -37,9 +49,7 @@ export const tambahLomba = async (req, res) => {
 export const hapusLomba = async (req, res) => {
   try {
     await prisma.lomba.delete({
-      where: {
-        id: req.params.lombaid,
-      },
+      where: { id: req.params.lombaid },
     });
 
     res.sendStatus(200);
