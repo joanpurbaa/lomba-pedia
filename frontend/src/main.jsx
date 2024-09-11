@@ -21,7 +21,8 @@ const router = createBrowserRouter([
 const customTheme = {
   button: {
     color: {
-      default: "bg-blue-600 bg-opacity-30 border border-blue-600 text-white",
+      default: "bg-blue-600 bg-opacity-30 border border-blue-600 text-blue-500",
+      daftar: "bg-blue-600 text-white",
     },
   },
 };
