@@ -58,11 +58,21 @@ const DetailLomba = () => {
               <h1 className="text-2xl font-semibold">{dataLomba.nama}</h1>
               <p>{dataLomba.penyelenggara}</p>
               <div className="flex gap-x-3">
-                <Button className="w-full" color="default">
+                <Button
+                  target="_blank"
+                  href={`https://api.whatsapp.com/send/?phone=${dataLomba.narahubung}`}
+                  className="w-full"
+                  color="default"
+                >
                   <AiOutlineMessage className="mr-2 h-5 w-5" />
                   Narahubung
                 </Button>
-                <Button className="w-full" color="daftar">
+                <Button
+                  target="_blank"
+                  href={dataLomba.linkPendaftaran}
+                  className="w-full"
+                  color="daftar"
+                >
                   <VscSend className="mr-2 h-5 w-5" />
                   Daftar
                 </Button>

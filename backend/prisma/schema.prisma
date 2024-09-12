@@ -22,6 +22,8 @@ model lomba {
   tingkat String?
   kategori String
   peserta String
+  narahubung String?
+  linkPendaftaran String?
   poster String?
   deskripsi String
 }

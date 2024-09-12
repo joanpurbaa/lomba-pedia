@@ -35,6 +35,8 @@ export const tambahLomba = async (req, res) => {
         tingkat: req.body.tingkat,
         kategori: req.body.kategori,
         peserta: req.body.peserta,
+        narahubung: req.body.narahubung,
+        linkPendaftaran: req.body.linkPendaftaran,
         poster: req.body.poster,
         deskripsi: JSON.stringify(req.body.deskripsi),
       },
