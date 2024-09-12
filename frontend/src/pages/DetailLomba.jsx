@@ -45,16 +45,16 @@ const DetailLomba = () => {
           </Button>
         </div>
         {lomba.map((dataLomba, index) => (
-          <div key={index} className="grid grid-cols-12 gap-x-5 mt-5">
+          <div key={index} className="grid grid-cols-12 gap-x-5 gap-y-5 mt-5">
             <img
-              className="col-span-4 w-full h-[89vh] object-cover object-top rounded-lg"
+              className="col-span-12 md:col-start-3 md:col-end-11 lg:col-span-4 w-full sm:h-[89vh] object-cover object-top rounded-lg"
               src={dataLomba.poster}
               alt=""
             />
-            <div className="col-span-4 bg-zinc-800 rounded-lg p-5">
+            <div className="col-span-12 lg:col-span-4 bg-zinc-800 rounded-lg p-5">
               <p>{dataLomba.deskripsi}</p>
             </div>
-            <div className="col-span-4 space-y-3">
+            <div className="col-span-12 lg:col-span-4 space-y-3">
               <h1 className="text-2xl font-semibold">{dataLomba.nama}</h1>
               <p>{dataLomba.penyelenggara}</p>
               <div className="flex gap-x-3">

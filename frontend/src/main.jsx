@@ -14,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <NotFoundPage />,
   },
   {
     path: "/detail",
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/unggah",
     element: <UnggahLomba />,
+    errorElement: <NotFoundPage />,
   },
 ]);
 const customTheme = {
