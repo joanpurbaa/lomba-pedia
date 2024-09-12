@@ -2,6 +2,8 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import DetailLomba from "./pages/DetailLomba";
+import UnggahLomba from "./pages/UnggahLomba";
+import NotFoundPage from "./pages/NotFoundPage";
 import "./index.css";
 import { Flowbite } from "flowbite-react";
 import axios from "axios";
@@ -16,6 +18,11 @@ const router = createBrowserRouter([
   {
     path: "/detail",
     element: <DetailLomba />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/unggah",
+    element: <UnggahLomba />,
   },
 ]);
 const customTheme = {
