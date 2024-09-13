@@ -39,10 +39,12 @@ const DetailLomba = () => {
           <Link to="/" className="text-xl font-semibold">
             Lomba pedia
           </Link>
-          <Button color="default">
-            <LuUpload className="mr-2 h-5 w-5" />
-            Unggah lomba
-          </Button>
+          <Link to="/unggah">
+            <Button color="default">
+              <LuUpload className="mr-2 h-5 w-5" />
+              Unggah lomba
+            </Button>
+          </Link>
         </div>
         {lomba.map((dataLomba, index) => (
           <div key={index} className="grid grid-cols-12 gap-x-5 gap-y-5 mt-5">
@@ -60,7 +62,7 @@ const DetailLomba = () => {
               <div className="flex gap-x-3">
                 <Button
                   target="_blank"
-                  href={`https://api.whatsapp.com/send/?phone=${dataLomba.narahubung}`}
+                  href={dataLomba.narahubung}
                   className="w-full"
                   color="default"
                 >

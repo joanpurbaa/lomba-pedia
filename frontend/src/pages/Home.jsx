@@ -26,10 +26,12 @@ const Home = () => {
       <div className="min-h-screen items-center text-white p-5">
         <div className="flex justify-between items-center">
           <Link className="text-xl font-semibold">Lomba pedia</Link>
-          <Button color="default">
-            <LuUpload className="mr-2 h-5 w-5" />
-            Unggah lomba
-          </Button>
+          <Link to="/unggah">
+            <Button color="default">
+              <LuUpload className="mr-2 h-5 w-5" />
+              Unggah lomba
+            </Button>
+          </Link>
         </div>
         <div className="grid grid-cols-12 gap-5 mt-5">
           {lomba.map((dataLomba, index) => (
