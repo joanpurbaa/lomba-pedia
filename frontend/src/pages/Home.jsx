@@ -27,7 +27,7 @@ const Home = () => {
         <div className="flex justify-between items-center">
           <Link className="text-xl font-semibold">Lomba pedia</Link>
           <Link to="/unggah">
-            <Button color="default">
+            <Button color="secondary">
               <LuUpload className="mr-2 h-5 w-5" />
               Unggah lomba
             </Button>

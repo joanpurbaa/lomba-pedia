@@ -40,7 +40,7 @@ const DetailLomba = () => {
             Lomba pedia
           </Link>
           <Link to="/unggah">
-            <Button color="default">
+            <Button color="secondary">
               <LuUpload className="mr-2 h-5 w-5" />
               Unggah lomba
             </Button>
@@ -64,7 +64,7 @@ const DetailLomba = () => {
                   target="_blank"
                   href={dataLomba.narahubung}
                   className="w-full"
-                  color="default"
+                  color="secondary"
                 >
                   <AiOutlineMessage className="mr-2 h-5 w-5" />
                   Narahubung
@@ -73,7 +73,7 @@ const DetailLomba = () => {
                   target="_blank"
                   href={dataLomba.linkPendaftaran}
                   className="w-full"
-                  color="daftar"
+                  color="primary"
                 >
                   <VscSend className="mr-2 h-5 w-5" />
                   Daftar

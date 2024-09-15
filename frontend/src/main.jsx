@@ -27,11 +27,28 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
 ]);
+
 const customTheme = {
   button: {
     color: {
-      default: "bg-blue-600 bg-opacity-30 border border-blue-600 text-blue-500",
-      daftar: "bg-blue-600 text-white",
+      primary: "bg-blue-600 text-white",
+      secondary: "bg-blue-600 bg-opacity-30 border border-blue-600 text-blue-500",
+    },
+  },
+  textInput: {
+    field: {
+      input: {
+        colors: {
+          default:
+            "border-transparent text-zinc-900 focus:border-transparent focus:ring-transparent",
+        },
+      },
+    },
+  },
+  textarea: {
+    colors: {
+      default:
+        "border-transparent text-zinc-900 focus:border-transparent focus:ring-transparent",
     },
   },
 };
