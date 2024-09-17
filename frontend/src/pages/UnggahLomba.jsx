@@ -5,7 +5,6 @@ import {
   FileInput,
   TextInput,
   Textarea,
-  Datepicker,
 } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
@@ -27,7 +26,7 @@ const UnggahLomba = () => {
 
     console.log(nama);
     console.log(Penyelenggara);
-    console.log(deadline);
+    console.log(new Date(deadline));
     console.log(linkPendaftaran);
     console.log(narahubung);
     console.log(tingkat);
@@ -119,9 +118,11 @@ const UnggahLomba = () => {
                 <p className="text-gray-400 text-sm">
                   Lomba akan dihapus tepat deadline pendaftaran ditutup
                 </p>
-                <Datepicker
+                <input
+                  className="text-zinc-900 mt-3 border-0 rounded-md"
+                  type="date"
                   onChange={(e) => setDeadline(e.target.value)}
-                ></Datepicker>
+                />
               </li>
               <li>
                 <label className="font-semibold" htmlFor="">
