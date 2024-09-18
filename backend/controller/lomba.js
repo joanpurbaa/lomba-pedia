@@ -37,8 +37,8 @@ export const tambahLomba = async (req, res) => {
         peserta: req.body.peserta,
         narahubung: req.body.narahubung,
         linkPendaftaran: req.body.linkPendaftaran,
-        poster: req.body.poster,
-        deskripsi: JSON.stringify(req.body.deskripsi),
+        poster: "dawg.jpg",
+        deskripsi: req.body.deskripsi,
       },
     });
 

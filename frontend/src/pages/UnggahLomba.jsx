@@ -1,12 +1,21 @@
 import { useState } from "react";
-import { Button, Label, FileInput, TextInput, Textarea } from "flowbite-react";
+import {
+  Button,
+  Label,
+  FileInput,
+  TextInput,
+  Dropdown,
+  Textarea,
+} from "flowbite-react";
 import { Link } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
+import axios from "axios";
 
 const UnggahLomba = () => {
   const [poster, setposter] = useState();
   const [nama, setNama] = useState();
-  const [Penyelenggara, setPenyelenggara] = useState();
+  const [penyelenggara, setPenyelenggara] = useState();
+  const [kategori, setKategori] = useState([]);
   const [deadline, setDeadline] = useState();
   const [linkPendaftaran, setLinkPendaftaran] = useState();
   const [narahubung, setNarahubung] = useState();
@@ -15,18 +24,31 @@ const UnggahLomba = () => {
   const [biaya, setBiaya] = useState();
   const [deskripsi, setDeskripsi] = useState();
 
-  const setData = (e) => {
+  // const handleKategorichange = (e) => {
+  //   const { value, checked } = e.target;
+
+  //   if (checked) {
+  //     setKategori((prevKategori) => [...prevKategori, value]);
+  //   } else {
+
+  //   }
+  // };
+
+  const uploadData = async (e) => {
     e.preventDefault();
 
-    console.log(nama);
-    console.log(Penyelenggara);
-    console.log(new Date(deadline));
-    console.log(linkPendaftaran);
-    console.log(narahubung);
-    console.log(tingkat);
-    console.log(peserta);
-    console.log(biaya);
-    console.log(deskripsi);
+    await axios.post("http://localhost:3000/tambahlomba", {
+      nama,
+      penyelenggara,
+      kategori,
+      deadline,
+      linkPendaftaran,
+      narahubung,
+      tingkat,
+      peserta,
+      pendaftaran: biaya,
+      deskripsi,
+    });
   };
 
   return (
@@ -45,7 +67,7 @@ const UnggahLomba = () => {
         </div>
         <form
           className="grid grid-cols-12 gap-x-5 gap-y-5 mt-5"
-          onSubmit={setData}
+          onSubmit={uploadData}
         >
           <div className="col-span-4 flex flex-col gap-y-5 w-full sm:h-[89vh]">
             <h2 className="text-xl font-semibold">Unggah poster lomba</h2>
@@ -95,7 +117,7 @@ const UnggahLomba = () => {
               </li>
               <li>
                 <label className="font-semibold" htmlFor="">
-                  Penyelenggara lomba
+                  penyelenggara lomba
                 </label>
                 <TextInput
                   onChange={(e) => setPenyelenggara(e.target.value || null)}
@@ -104,6 +126,133 @@ const UnggahLomba = () => {
                   placeholder="Universitas..."
                   required
                 ></TextInput>
+              </li>
+              <li>
+                <label className="font-semibold" htmlFor="">
+                  Kategori lomba
+                </label>
+                <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Design")}
+                      className="rounded-full"
+                      name="level"
+                      id="design"
+                      type="checkbox"
+                    />
+                    <label htmlFor="design">Design</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Videography")}
+                      className="rounded-full"
+                      name="level"
+                      id="videography"
+                      type="checkbox"
+                    />
+                    <label htmlFor="videography">Videography</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Photography")}
+                      className="rounded-full"
+                      name="level"
+                      id="photography"
+                      type="checkbox"
+                    />
+                    <label htmlFor="photography">Photography</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("UI/UX")}
+                      className="rounded-full"
+                      name="level"
+                      id="ui/ux"
+                      type="checkbox"
+                    />
+                    <label htmlFor="ui/ux">UI/UX</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("IT & Technology")}
+                      className="rounded-full"
+                      name="level"
+                      id="itTechnology"
+                      type="checkbox"
+                    />
+                    <label htmlFor="itTechnology">IT & Technology</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Esai")}
+                      className="rounded-full"
+                      name="level"
+                      id="esai"
+                      type="checkbox"
+                    />
+                    <label htmlFor="esai">Esai</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Puisi")}
+                      className="rounded-full"
+                      name="level"
+                      id="puisi"
+                      type="checkbox"
+                    />
+                    <label htmlFor="puisi">Puisi</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Marketing")}
+                      className="rounded-full"
+                      name="level"
+                      id="marketing"
+                      type="checkbox"
+                    />
+                    <label htmlFor="marketing">Marketing</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Olahraga")}
+                      className="rounded-full"
+                      name="level"
+                      id="olahraga"
+                      type="checkbox"
+                    />
+                    <label htmlFor="olahraga">Olahraga</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Kesehatan")}
+                      className="rounded-full"
+                      name="level"
+                      id="kesehatan"
+                      type="checkbox"
+                    />
+                    <label htmlFor="kesehatan">Kesehatan</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Matematika")}
+                      className="rounded-full"
+                      name="level"
+                      id="matematika"
+                      type="checkbox"
+                    />
+                    <label htmlFor="matematika">Matematika</label>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <input
+                      onChange={() => setKategori("Musik")}
+                      className="rounded-full"
+                      name="level"
+                      id="musik"
+                      type="checkbox"
+                    />
+                    <label htmlFor="musik">Musik</label>
+                  </div>
+                </div>
               </li>
               <li>
                 <label className="font-semibold" htmlFor="">
