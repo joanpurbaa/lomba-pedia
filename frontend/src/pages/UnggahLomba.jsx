@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Button,
-  Label,
-  FileInput,
-  TextInput,
-  Textarea,
-} from "flowbite-react";
+import { Button, Label, FileInput, TextInput, Textarea } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
 
@@ -17,7 +11,7 @@ const UnggahLomba = () => {
   const [linkPendaftaran, setLinkPendaftaran] = useState();
   const [narahubung, setNarahubung] = useState();
   const [tingkat, setTingkat] = useState();
-  const [peserta, setPeserta] = useState();
+  const [peserta, setPeserta] = useState([]);
   const [biaya, setBiaya] = useState();
   const [deskripsi, setDeskripsi] = useState();
 
@@ -75,13 +69,11 @@ const UnggahLomba = () => {
                     d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                   />
                 </svg>
-                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-sm text-gray-400">
                   <span className="font-semibold">Klik untuk mengupload</span>{" "}
                   atau drag and drop
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  PNG, JPG atau JPEG
-                </p>
+                <p className="text-xs text-gray-400">PNG, JPG atau JPEG</p>
               </div>
               <FileInput id="dropzone-file" className="hidden" />
             </Label>
@@ -94,10 +86,11 @@ const UnggahLomba = () => {
                   Nama lomba
                 </label>
                 <TextInput
-                  onChange={(e) => setNama(e.target.value)}
+                  onChange={(e) => setNama(e.target.value || null)}
                   color="default"
                   className="mt-3"
                   placeholder="Lomba Web Design Universitas..."
+                  required
                 ></TextInput>
               </li>
               <li>
@@ -105,10 +98,11 @@ const UnggahLomba = () => {
                   Penyelenggara lomba
                 </label>
                 <TextInput
-                  onChange={(e) => setPenyelenggara(e.target.value)}
+                  onChange={(e) => setPenyelenggara(e.target.value || null)}
                   color="default"
                   className="mt-3"
                   placeholder="Universitas..."
+                  required
                 ></TextInput>
               </li>
               <li>
@@ -119,9 +113,9 @@ const UnggahLomba = () => {
                   Lomba akan dihapus tepat deadline pendaftaran ditutup
                 </p>
                 <input
-                  className="text-zinc-900 mt-3 border-0 rounded-md"
+                  className="text-zinc-900 mt-3 border-0 focus:ring-0 rounded-md"
                   type="date"
-                  onChange={(e) => setDeadline(e.target.value)}
+                  onChange={(e) => setDeadline(e.target.value || null)}
                 />
               </li>
               <li>
@@ -129,10 +123,11 @@ const UnggahLomba = () => {
                   Link pendaftaran lomba
                 </label>
                 <TextInput
-                  onChange={(e) => setLinkPendaftaran(e.target.value)}
+                  onChange={(e) => setLinkPendaftaran(e.target.value || null)}
                   color="default"
                   className="mt-3"
                   placeholder="https://dafarlombaposter..."
+                  required
                 ></TextInput>
               </li>
               <li>
@@ -143,10 +138,11 @@ const UnggahLomba = () => {
                   Link narahubung berupa (WhatsApp/Telegram/Instagram)
                 </p>
                 <TextInput
-                  onChange={(e) => setNarahubung(e.target.value)}
+                  onChange={(e) => setNarahubung(e.target.value || null)}
                   color="default"
                   className="mt-3"
                   placeholder="https://wa.me/628**********"
+                  required
                 ></TextInput>
               </li>
               <li>
@@ -295,7 +291,7 @@ const UnggahLomba = () => {
                   Deskripsi lomba
                 </label>
                 <Textarea
-                  onChange={(e) => setDeskripsi(e.target.value)}
+                  onChange={(e) => setDeskripsi(e.target.value || null)}
                   color="default"
                   className="mt-3 resize-none"
                   rows={20}
