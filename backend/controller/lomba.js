@@ -42,7 +42,17 @@ export const tambahLomba = async (req, res) => {
       },
     });
 
-    console.log(data);
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const hapusSemuaLomba = async (req, res) => {
+  try {
+    await prisma.lomba.deleteMany();
+
+    res.sendStatus(200);
   } catch (error) {
     console.log(error);
   }

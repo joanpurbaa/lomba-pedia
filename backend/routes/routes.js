@@ -4,6 +4,7 @@ import {
   tampilkanLombaById,
   tambahLomba,
   hapusLomba,
+  hapusSemuaLomba,
 } from "../controller/lomba.js";
 
 const route = express.Router();
@@ -12,6 +13,7 @@ const route = express.Router();
 route.get("/tampilkanlomba", tampilkanLomba);
 route.get("/tampilkanlombabyid/:lombaid", tampilkanLombaById);
 route.post("/tambahlomba", tambahLomba);
+route.delete("/hapus", hapusSemuaLomba);
 route.delete("/hapus/:lombaid", hapusLomba);
 
 export default route;

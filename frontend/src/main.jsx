@@ -32,14 +32,15 @@ const customTheme = {
   button: {
     color: {
       primary: "bg-blue-600 text-white",
-      secondary: "bg-blue-600 bg-opacity-30 border border-blue-600 text-blue-500",
+      secondary:
+        "bg-blue-600 bg-opacity-30 border border-blue-600 text-blue-500",
     },
   },
   textInput: {
     field: {
       input: {
         colors: {
-          default:
+          default:  
             "border-transparent text-zinc-900 focus:border-transparent focus:ring-transparent",
         },
       },

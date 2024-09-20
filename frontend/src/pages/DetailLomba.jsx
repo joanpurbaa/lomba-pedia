@@ -54,7 +54,11 @@ const DetailLomba = () => {
               alt=""
             />
             <div className="col-span-12 lg:col-span-4 bg-zinc-800 rounded-lg p-5">
-              <p>{dataLomba.deskripsi}</p>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: dataLomba.deskripsi.replace(/\n/g, "<br>"),
+                }}
+              ></span>
             </div>
             <div className="col-span-12 lg:col-span-4 space-y-3">
               <h1 className="text-2xl font-semibold">{dataLomba.nama}</h1>
@@ -93,9 +97,29 @@ const DetailLomba = () => {
               </div>
               <div className="flex justify-between">
                 <p className="font-semibold">Kategori</p>
-                <p className="text-start bg-zinc-700 text-sm p-2 rounded-md">
-                  {dataLomba.kategori}
-                </p>
+                <div className="flex gap-x-3">
+                  {dataLomba.kategori.map((detailKategori, index) => (
+                    <p
+                      key={index}
+                      className="text-start bg-zinc-700 text-sm font-medium p-2 rounded-md"
+                    >
+                      {detailKategori}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-between">
+                <p className="font-semibold">Peserta</p>
+                <div className="flex gap-x-3">
+                  {dataLomba.peserta.map((detailPeserta, index) => (
+                    <p
+                      key={index}
+                      className="text-start bg-zinc-700 text-sm font-medium p-2 rounded-md"
+                    >
+                      {detailPeserta}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
