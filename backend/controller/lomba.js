@@ -26,7 +26,7 @@ export const tampilkanLombaById = async (req, res) => {
 
 export const tambahLomba = async (req, res) => {
   try {
-    await prisma.lomba.create({
+    const data = await prisma.lomba.create({
       data: {
         nama: req.body.nama,
         penyelenggara: req.body.penyelenggara,
@@ -42,7 +42,7 @@ export const tambahLomba = async (req, res) => {
       },
     });
 
-    res.sendStatus(201);
+    console.log(data);
   } catch (error) {
     console.log(error);
   }

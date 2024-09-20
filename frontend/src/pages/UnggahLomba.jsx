@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Button,
-  Label,
-  FileInput,
-  TextInput,
-  Dropdown,
-  Textarea,
-} from "flowbite-react";
+import { Button, Label, FileInput, TextInput, Textarea } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
 import axios from "axios";
@@ -15,7 +8,7 @@ const UnggahLomba = () => {
   const [poster, setposter] = useState();
   const [nama, setNama] = useState();
   const [penyelenggara, setPenyelenggara] = useState();
-  const [kategori, setKategori] = useState([]);
+  const [kategori, setkategori] = useState([]);
   const [deadline, setDeadline] = useState();
   const [linkPendaftaran, setLinkPendaftaran] = useState();
   const [narahubung, setNarahubung] = useState();
@@ -24,15 +17,25 @@ const UnggahLomba = () => {
   const [biaya, setBiaya] = useState();
   const [deskripsi, setDeskripsi] = useState();
 
-  // const handleKategorichange = (e) => {
-  //   const { value, checked } = e.target;
+  const handleKategoriChange = (e) => {
+    const { value, checked } = e.target;
 
-  //   if (checked) {
-  //     setKategori((prevKategori) => [...prevKategori, value]);
-  //   } else {
+    if (checked) {
+      setkategori((prevKategori) => [...prevKategori, value]);
+    } else {
+      setkategori((prevKategori) => prevKategori.filter((item) => item !== value));
+    }
+  };
 
-  //   }
-  // };
+  const handlePesertaChange = (e) => {
+    const { value, checked } = e.target;
+
+    if (checked) {
+      setPeserta((prevPeserta) => [...prevPeserta, value]);
+    } else {
+      setPeserta((prevPeserta) => prevPeserta.filter((item) => item !== value));
+    }
+  };
 
   const uploadData = async (e) => {
     e.preventDefault();
@@ -134,7 +137,8 @@ const UnggahLomba = () => {
                 <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Design")}
+                      onChange={handleKategoriChange}
+                      value="Design"
                       className="rounded-full"
                       name="level"
                       id="design"
@@ -144,7 +148,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Videography")}
+                      onChange={handleKategoriChange}
+                      value="Videography"
                       className="rounded-full"
                       name="level"
                       id="videography"
@@ -154,7 +159,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Photography")}
+                      onChange={handleKategoriChange}
+                      value="Photography"
                       className="rounded-full"
                       name="level"
                       id="photography"
@@ -164,7 +170,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("UI/UX")}
+                      onChange={handleKategoriChange}
+                      value="UI/UX"
                       className="rounded-full"
                       name="level"
                       id="ui/ux"
@@ -174,7 +181,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("IT & Technology")}
+                      onChange={handleKategoriChange}
+                      value="IT & Technology"
                       className="rounded-full"
                       name="level"
                       id="itTechnology"
@@ -184,7 +192,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Esai")}
+                      onChange={handleKategoriChange}
+                      value="Esai"
                       className="rounded-full"
                       name="level"
                       id="esai"
@@ -194,7 +203,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Puisi")}
+                      onChange={handleKategoriChange}
+                      value="Puisi"
                       className="rounded-full"
                       name="level"
                       id="puisi"
@@ -204,7 +214,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Marketing")}
+                      onChange={handleKategoriChange}
+                      value="Marketing"
                       className="rounded-full"
                       name="level"
                       id="marketing"
@@ -214,7 +225,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Olahraga")}
+                      onChange={handleKategoriChange}
+                      value="Olahraga"
                       className="rounded-full"
                       name="level"
                       id="olahraga"
@@ -224,7 +236,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Kesehatan")}
+                      onChange={handleKategoriChange}
+                      value="Kesehatan"
                       className="rounded-full"
                       name="level"
                       id="kesehatan"
@@ -234,7 +247,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Matematika")}
+                      onChange={handleKategoriChange}
+                      value="Matematika"
                       className="rounded-full"
                       name="level"
                       id="matematika"
@@ -244,7 +258,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setKategori("Musik")}
+                      onChange={handleKategoriChange}
+                      value="Musik"
                       className="rounded-full"
                       name="level"
                       id="musik"
@@ -358,7 +373,8 @@ const UnggahLomba = () => {
                 <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setPeserta("Mahasiswa")}
+                      onChange={handlePesertaChange}
+                      value="Mahasiswa"
                       className="rounded-full"
                       name="level"
                       id="mahasiswa"
@@ -368,17 +384,19 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setPeserta("SMA Sederajat")}
+                      onChange={handlePesertaChange}
+                      value="SMA Sederajat"
                       className="rounded-full"
                       name="level"
-                      id="sma-smk"
+                      id="smaSederajat"
                       type="checkbox"
                     />
-                    <label htmlFor="sma-smk">SMA Sederajat</label>
+                    <label htmlFor="smaSederajat">SMA Sederajat</label>
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setPeserta("SMP")}
+                      onChange={handlePesertaChange}
+                      value="SMP"
                       className="rounded-full"
                       name="level"
                       id="smp"
@@ -388,7 +406,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setPeserta("SD")}
+                      onChange={handlePesertaChange}
+                      value="SD"
                       className="rounded-full"
                       name="level"
                       id="sd"
@@ -398,7 +417,8 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setPeserta("Umum")}
+                      onChange={handlePesertaChange}
+                      value="Umum"
                       className="rounded-full"
                       name="level"
                       id="umum"

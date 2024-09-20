@@ -20,8 +20,8 @@ model lomba {
   deadline String
   pendaftaran String
   tingkat String?
-  kategori String
-  peserta String
+  kategori String[]
+  peserta String[]
   narahubung String?
   linkPendaftaran String?
   poster String?
