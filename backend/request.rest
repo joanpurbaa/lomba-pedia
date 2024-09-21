@@ -26,4 +26,4 @@ Content-Type: application/json
 DELETE http://localhost:3000/hapus
 
 ###
-DELETE http://localhost:3000/hapus/66e271a5aa47c0e386164bfb
+DELETE http://localhost:3000/hapus/66eee4cb9ca4eebe6de0c5f1

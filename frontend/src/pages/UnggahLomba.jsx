@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { Button, Label, FileInput, TextInput, Textarea } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const UnggahLomba = () => {
-  const [poster, setposter] = useState();
+  const navigate = useNavigate();
+
   const [nama, setNama] = useState();
   const [penyelenggara, setPenyelenggara] = useState();
+  const [deadline, setDeadline] = useState(undefined);
+  const [biaya, setBiaya] = useState(undefined);
+  const [tingkat, setTingkat] = useState(undefined);
   const [kategori, setkategori] = useState([]);
-  const [deadline, setDeadline] = useState();
-  const [linkPendaftaran, setLinkPendaftaran] = useState();
-  const [narahubung, setNarahubung] = useState();
-  const [tingkat, setTingkat] = useState();
   const [peserta, setPeserta] = useState([]);
-  const [biaya, setBiaya] = useState();
+  const [narahubung, setNarahubung] = useState();
+  const [linkPendaftaran, setLinkPendaftaran] = useState();
+  const [poster, setposter] = useState();
   const [deskripsi, setDeskripsi] = useState();
 
   const handleKategoriChange = (e) => {
@@ -23,7 +27,9 @@ const UnggahLomba = () => {
     if (checked) {
       setkategori((prevKategori) => [...prevKategori, value]);
     } else {
-      setkategori((prevKategori) => prevKategori.filter((item) => item !== value));
+      setkategori((prevKategori) =>
+        prevKategori.filter((item) => item !== value)
+      );
     }
   };
 
@@ -40,22 +46,83 @@ const UnggahLomba = () => {
   const uploadData = async (e) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:3000/tambahlomba", {
-      nama,
-      penyelenggara,
-      kategori,
-      deadline,
-      linkPendaftaran,
-      narahubung,
-      tingkat,
-      peserta,
-      pendaftaran: biaya,
-      deskripsi,
-    });
+    if (kategori.length == 0) {
+      toast.error("Pilih kategori lomba", {
+        className: "text-zinc-700 font-semibold",
+      });
+    } else if (deadline == undefined) {
+      toast.error("Masukkan deadline lomba", {
+        className: "text-zinc-700 font-semibold",
+      });
+    } else if (tingkat == undefined) {
+      toast.error("Tentukan tingkat lomba", {
+        className: "text-zinc-700 font-semibold",
+      });
+    } else if (peserta.length == 0) {
+      toast.error("Tentukan peserta lomba", {
+        className: "text-zinc-700 font-semibold",
+      });
+    } else if (biaya == undefined) {
+      toast.error("Tentukan biaya lomba", {
+        className: "text-zinc-700 font-semibold",
+      });
+    } else {
+      await axios.post("http://localhost:3000/tambahlomba", {
+        nama,
+        penyelenggara,
+        kategori,
+        deadline,
+        linkPendaftaran,
+        narahubung,
+        tingkat,
+        peserta,
+        pendaftaran: biaya,
+        deskripsi,
+      });
+
+      navigate("/");
+    }
   };
+
+//   Halo teman-teman👋🏻!
+// Lomba GeoPoster (Geospasial Poster) 2025 kembali hadir menyediakan wadah bagi kalian yang ingin menyalurkan ide dan kreatifitasnya dengan tema:
+
+// 🍂“𝙏𝙝𝙚 𝘼𝙥𝙥𝙡𝙞𝙘𝙖𝙩𝙞𝙤𝙣 𝙤𝙛 𝙂𝙚𝙤𝙨𝙥𝙖𝙩𝙞𝙖𝙡 𝙏𝙚𝙘𝙝𝙣𝙤𝙡𝙤𝙜𝙮 𝙞𝙣 𝘼𝙙𝙙𝙧𝙚𝙨𝙨𝙞𝙣𝙜 𝘾𝙤𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝙄𝙨𝙨𝙪𝙚𝙨.” 🍂
+
+// Benefit dalam mengikuti kompetisi ini:
+// - Uang tunai bagi pemenang lomba
+// - Sertifikat bagi seluruh peserta
+
+// Jangan lewatkan kesempatanmu, segera daftarkan dirimu!
+
+// 📭 Link Terpusat 📭
+// linktr.ee/GeospatialCompetition2025
+
+// 📌Registrasi📌
+// 26 September - 26 Oktober 2024
+// Biaya : 30k/poster (1 peserta maksimal 2 poster)
+
+// Sampai Jumpa di Lomba!!🙌🏻
+
+// 𝘾𝙤𝙣𝙩𝙖𝙘𝙩 𝙋𝙚𝙧𝙨𝙤𝙣 (𝘾𝙋)
+// Whatsapp
+// 📞085721571388 (Anya)
+// Line
+// 📱widyaap05
+
+// Jangan sampai ketinggalan informasi selanjutnya!
+// Instagram : @geopoint.itb
+// X : @geopointitb
+// Youtube : Geopoint IMG-ITB
+
+// Geopoint IMG-ITB 2025
+// Ikatan Mahasiswa Geodesi ITB
+// #AWonderfulAdventureToNewSantara
+// #PotensiEksistensi
 
   return (
     <>
+      <ToastContainer />
       <div className="min-h-dvh items-center text-white p-5">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-xl font-semibold">
@@ -111,7 +178,7 @@ const UnggahLomba = () => {
                   Nama lomba
                 </label>
                 <TextInput
-                  onChange={(e) => setNama(e.target.value || null)}
+                  onChange={(e) => setNama(e.target.value)}
                   color="default"
                   className="mt-3"
                   placeholder="Lomba Web Design Universitas..."
@@ -123,7 +190,7 @@ const UnggahLomba = () => {
                   penyelenggara lomba
                 </label>
                 <TextInput
-                  onChange={(e) => setPenyelenggara(e.target.value || null)}
+                  onChange={(e) => setPenyelenggara(e.target.value)}
                   color="default"
                   className="mt-3"
                   placeholder="Universitas..."
