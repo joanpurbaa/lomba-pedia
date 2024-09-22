@@ -26,23 +26,37 @@ export const tampilkanLombaById = async (req, res) => {
 
 export const tambahLomba = async (req, res) => {
   try {
-    const data = await prisma.lomba.create({
-      data: {
-        nama: req.body.nama,
-        penyelenggara: req.body.penyelenggara,
-        deadline: req.body.deadline,
-        pendaftaran: req.body.pendaftaran,
-        tingkat: req.body.tingkat,
-        kategori: req.body.kategori,
-        peserta: req.body.peserta,
-        narahubung: req.body.narahubung,
-        linkPendaftaran: req.body.linkPendaftaran,
-        poster: "dawg.jpg",
-        deskripsi: req.body.deskripsi,
-      },
-    });
+    // await prisma.lomba.create({
+    //   data: {
+    //     nama: req.body.nama,
+    //     penyelenggara: req.body.penyelenggara,
+    //     deadline: req.body.deadline,
+    //     pendaftaran: req.body.pendaftaran,
+    //     tingkat: req.body.tingkat,
+    //     kategori: req.body.kategori,
+    //     peserta: req.body.peserta,
+    //     narahubung: req.body.narahubung,
+    //     linkPendaftaran: req.body.linkPendaftaran,
+    //     poster: "dawg.jpg",
+    //     deskripsi: req.body.deskripsi,
+    //   },
+    // });
 
-    res.sendStatus(200);
+    // res.sendStatus(200);
+
+    console.log({
+      nama: req.body.nama,
+      penyelenggara: req.body.penyelenggara,
+      deadline: req.body.deadline,
+      pendaftaran: req.body.pendaftaran,
+      tingkat: req.body.tingkat,
+      kategori: req.body.kategori,
+      peserta: req.body.peserta,
+      narahubung: req.body.narahubung,
+      linkPendaftaran: req.body.linkPendaftaran,
+      poster: req.body.poster,
+      deskripsi: req.body.deskripsi,
+    });
   } catch (error) {
     console.log(error);
   }
