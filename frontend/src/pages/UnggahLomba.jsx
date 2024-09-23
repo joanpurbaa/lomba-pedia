@@ -18,8 +18,9 @@ const UnggahLomba = () => {
   const [peserta, setPeserta] = useState([]);
   const [narahubung, setNarahubung] = useState();
   const [linkPendaftaran, setLinkPendaftaran] = useState();
-  const [poster, setposter] = useState();
+  let [poster, setPoster] = useState(undefined);
   const [deskripsi, setDeskripsi] = useState();
+  const [preview, setPreview] = useState();
 
   const handleKategoriChange = (e) => {
     const { value, checked } = e.target;
@@ -43,10 +44,19 @@ const UnggahLomba = () => {
     }
   };
 
+  const loadPoster = (e) => {
+    setPoster(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+  };
+
   const uploadData = async (e) => {
     e.preventDefault();
 
-    if (kategori.length == 0) {
+    if (poster == undefined) {
+      toast.error("Upload poster lomba", {
+        className: "text-zinc-700 font-semibold",
+      });
+    } else if (kategori.length == 0) {
       toast.error("Pilih kategori lomba", {
         className: "text-zinc-700 font-semibold",
       });
@@ -67,58 +77,40 @@ const UnggahLomba = () => {
         className: "text-zinc-700 font-semibold",
       });
     } else {
-      await axios.post("http://localhost:3000/tambahlomba", {
-        nama,
-        penyelenggara,
-        kategori,
-        deadline,
-        linkPendaftaran,
-        narahubung,
-        tingkat,
-        peserta,
-        pendaftaran: biaya,
-        deskripsi,
-      });
+      const file = poster;
+      let posterDataType = poster.type;
+      let acceptedImageDataType = ["jpg", "jpeg", "png"];
 
-      navigate("/");
+      posterDataType = posterDataType.split("/")[1];
+
+      if (!acceptedImageDataType.includes(posterDataType)) {
+        toast.error("Jenis file poster yang diterima hanya jpg, jpeg dan png", {
+          className: "text-zinc-700 font-semibold",
+        });
+      } else {
+        poster = Math.floor(100000 + Math.random() * 999999);
+        poster = poster + "." + posterDataType;
+
+        const formData = new FormData();
+
+        formData.append("nama", nama);
+        formData.append("penyelenggara", penyelenggara);
+        formData.append("kategori", kategori);
+        formData.append("deadline", deadline);
+        formData.append("linkPendaftaran", linkPendaftaran);
+        formData.append("narahubung", narahubung);
+        formData.append("tingkat", tingkat);
+        formData.append("peserta", peserta);
+        formData.append("pendaftaran", biaya);
+        formData.append("poster", file);
+        formData.append("deskripsi", deskripsi);
+
+        await axios.post("http://localhost:3000/tambahlomba", formData);
+
+        // navigate("/");
+      }
     }
   };
-
-//   Halo teman-teman👋🏻!
-// Lomba GeoPoster (Geospasial Poster) 2025 kembali hadir menyediakan wadah bagi kalian yang ingin menyalurkan ide dan kreatifitasnya dengan tema:
-
-// 🍂“𝙏𝙝𝙚 𝘼𝙥𝙥𝙡𝙞𝙘𝙖𝙩𝙞𝙤𝙣 𝙤𝙛 𝙂𝙚𝙤𝙨𝙥𝙖𝙩𝙞𝙖𝙡 𝙏𝙚𝙘𝙝𝙣𝙤𝙡𝙤𝙜𝙮 𝙞𝙣 𝘼𝙙𝙙𝙧𝙚𝙨𝙨𝙞𝙣𝙜 𝘾𝙤𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝙄𝙨𝙨𝙪𝙚𝙨.” 🍂
-
-// Benefit dalam mengikuti kompetisi ini:
-// - Uang tunai bagi pemenang lomba
-// - Sertifikat bagi seluruh peserta
-
-// Jangan lewatkan kesempatanmu, segera daftarkan dirimu!
-
-// 📭 Link Terpusat 📭
-// linktr.ee/GeospatialCompetition2025
-
-// 📌Registrasi📌
-// 26 September - 26 Oktober 2024
-// Biaya : 30k/poster (1 peserta maksimal 2 poster)
-
-// Sampai Jumpa di Lomba!!🙌🏻
-
-// 𝘾𝙤𝙣𝙩𝙖𝙘𝙩 𝙋𝙚𝙧𝙨𝙤𝙣 (𝘾𝙋)
-// Whatsapp
-// 📞085721571388 (Anya)
-// Line
-// 📱widyaap05
-
-// Jangan sampai ketinggalan informasi selanjutnya!
-// Instagram : @geopoint.itb
-// X : @geopointitb
-// Youtube : Geopoint IMG-ITB
-
-// Geopoint IMG-ITB 2025
-// Ikatan Mahasiswa Geodesi ITB
-// #AWonderfulAdventureToNewSantara
-// #PotensiEksistensi
 
   return (
     <>
@@ -136,8 +128,10 @@ const UnggahLomba = () => {
           </Link>
         </div>
         <form
+          method="post"
           className="grid grid-cols-12 gap-x-5 gap-y-5 mt-5"
           onSubmit={uploadData}
+          encType="multipart/form-data"
         >
           <div className="col-span-4 flex flex-col gap-y-5 w-full sm:h-[89vh]">
             <h2 className="text-xl font-semibold">Unggah poster lomba</h2>
@@ -166,8 +160,22 @@ const UnggahLomba = () => {
                   atau drag and drop
                 </p>
                 <p className="text-xs text-gray-400">PNG, JPG atau JPEG</p>
+                {preview ? (
+                  <img
+                    className="sm:h-[60%] mt-5"
+                    src={preview}
+                    alt="Preview"
+                  />
+                ) : (
+                  ""
+                )}
               </div>
-              <FileInput id="dropzone-file" className="hidden" />
+              <FileInput
+                onChange={loadPoster}
+                id="dropzone-file"
+                className="hidden"
+                name="poster"
+              />
             </Label>
           </div>
           <div className="col-span-5">

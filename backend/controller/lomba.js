@@ -44,6 +44,8 @@ export const tambahLomba = async (req, res) => {
 
     // res.sendStatus(200);
 
+    console.log(req.files.poster)
+
     console.log({
       nama: req.body.nama,
       penyelenggara: req.body.penyelenggara,

@@ -17,8 +17,6 @@ const Home = () => {
     }
   };
 
-  console.log(lomba);
-
   useEffect(() => {
     fetch();
   }, []);
@@ -36,36 +34,32 @@ const Home = () => {
           </Link>
         </div>
         <div className="grid grid-cols-12 gap-5 mt-5">
-          {lomba.length !== 0 ? (
-            lomba.map((dataLomba, index) => (
-              <Link
-                to={`/detail?id=${dataLomba.id}`}
-                key={index}
-                className="col-span-12 sm:col-span-6 lg:col-span-6 xl:col-span-3 flex flex-col items-start gap-y-2"
-              >
-                <img
-                  className="w-full h-[500px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[550px] object-cover object-top rounded-lg"
-                  src={dataLomba.poster}
-                  alt=""
-                />
-                <h2 className="text-xl font-semibold">{dataLomba.nama}</h2>
-                <p>{dataLomba.deadline}</p>
-                <div className="flex gap-x-3">
-                  {dataLomba.kategori.map((detailKategori, index) => (
-                    <p
-                      key={index}
-                      className="text-start bg-zinc-700 text-sm font-medium p-2 rounded-md"
-                    >
-                      {detailKategori}
-                    </p>
-                  ))}
-                </div>
-                <marquee>{dataLomba.penyelenggara}</marquee>
-              </Link>
-            ))
-          ) : (
-            <h1>hell nah</h1>
-          )}
+          {lomba.map((dataLomba, index) => (
+            <Link
+              to={`/detail?id=${dataLomba.id}`}
+              key={index}
+              className="col-span-12 sm:col-span-6 lg:col-span-6 xl:col-span-3 flex flex-col items-start gap-y-2"
+            >
+              <img
+                className="w-full h-[500px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[550px] object-cover object-top rounded-lg"
+                src={dataLomba.poster}
+                alt=""
+              />
+              <h2 className="text-xl font-semibold">{dataLomba.nama}</h2>
+              <p>{dataLomba.deadline}</p>
+              <div className="flex gap-x-3">
+                {dataLomba.kategori.map((detailKategori, index) => (
+                  <p
+                    key={index}
+                    className="text-start bg-zinc-700 text-sm font-medium p-2 rounded-md"
+                  >
+                    {detailKategori}
+                  </p>
+                ))}
+              </div>
+              <marquee>{dataLomba.penyelenggara}</marquee>
+            </Link>
+          ))}
         </div>
       </div>
     </>
