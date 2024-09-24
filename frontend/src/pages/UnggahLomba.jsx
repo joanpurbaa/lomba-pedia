@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Button, Label, FileInput, TextInput, Textarea } from "flowbite-react";
+import {
+  Button,
+  Label,
+  FileInput,
+  TextInput,
+  Textarea,
+  Spinner,
+} from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
@@ -21,6 +28,7 @@ const UnggahLomba = () => {
   let [poster, setPoster] = useState(undefined);
   const [deskripsi, setDeskripsi] = useState();
   const [preview, setPreview] = useState();
+  const [loading, setLoading] = useState();
 
   const handleKategoriChange = (e) => {
     const { value, checked } = e.target;
@@ -53,7 +61,7 @@ const UnggahLomba = () => {
     e.preventDefault();
 
     if (poster == undefined) {
-      toast.error("Upload poster lomba", {
+      toast.error("Unggah poster lomba", {
         className: "text-zinc-700 font-semibold",
       });
     } else if (kategori.length == 0) {
@@ -88,26 +96,25 @@ const UnggahLomba = () => {
           className: "text-zinc-700 font-semibold",
         });
       } else {
-        poster = Math.floor(100000 + Math.random() * 999999);
-        poster = poster + "." + posterDataType;
-
         const formData = new FormData();
 
         formData.append("nama", nama);
         formData.append("penyelenggara", penyelenggara);
-        formData.append("kategori", kategori);
+        formData.append("kategori", JSON.stringify(kategori));
         formData.append("deadline", deadline);
         formData.append("linkPendaftaran", linkPendaftaran);
         formData.append("narahubung", narahubung);
         formData.append("tingkat", tingkat);
-        formData.append("peserta", peserta);
+        formData.append("peserta", JSON.stringify(peserta));
         formData.append("pendaftaran", biaya);
         formData.append("poster", file);
         formData.append("deskripsi", deskripsi);
 
-        await axios.post("http://localhost:3000/tambahlomba", formData);
+        await axios
+          .post("http://localhost:3000/tambahlomba", formData)
+          .then(() => setLoading(true));
 
-        // navigate("/");
+        navigate("/");
       }
     }
   };
@@ -115,6 +122,13 @@ const UnggahLomba = () => {
   return (
     <>
       <ToastContainer />
+      {loading ? (
+        <div className="fixed w-full h-screen flex justify-center items-center bg-gray-500 bg-opacity-40">
+          <Spinner className="absolute " aria-label="Default status example" />
+        </div>
+      ) : (
+        ""
+      )}
       <div className="min-h-dvh items-center text-white p-5">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-xl font-semibold">

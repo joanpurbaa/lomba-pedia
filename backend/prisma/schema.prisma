@@ -24,6 +24,7 @@ model lomba {
   peserta String[]
   narahubung String?
   linkPendaftaran String?
+  urlPoster String
   poster String?
   deskripsi String
 }

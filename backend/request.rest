@@ -5,25 +5,7 @@ GET http://localhost:3000/tampilkanlomba
 GET http://localhost:3000/tampilkanlombabyid/66dedd21e17a1c4498bca8f5
 
 ###
-POST http://localhost:3000/tambahlomba
-Content-Type: application/json
-
-{
-  "nama": "Lomba Cybersecurity Talent",
-  "penyelenggara": "Kominfo",
-  "deadline": "15 September 2024",
-  "pendaftaran": "gratis",
-  "tingkat": "Nasional",
-  "kategori": "Cyber Security",
-  "peserta": "SMA Sederajat",
-  "narahubung" : "https://wa.me/6282275338090",
-  "linkPendaftaran" : "https://forms.gle/kcByrQ4zKS36KWJY6",
-  "poster": "lombaCyber.jpg",
-  "deskripsi": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus lorem, non fringilla ipsum orci ut nulla. Nullam nec varius felis, nec efficitur ex. Vestibulum ultricies sapien eget velit aliquet, in faucibus odio venenatis. Donec a eros nec sapien cursus facilisis non ac tortor. Sed fermentum augue nec dictum vestibulum. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus lorem, non fringilla ipsum orci ut nulla. Nullam nec varius felis, nec efficitur ex. Vestibulum ultricies sapien eget velit aliquet, in faucibus odio venenatis. Donec a eros nec sapien cursus facilisis non ac tortor. Sed fermentum augue nec dictum vestibulum. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus lorem, non fringilla ipsum orci ut nulla. Nullam nec varius felis, nec efficitur ex. Vestibulum ultricies sapien eget velit aliquet, in faucibus odio venenatis. Donec a eros nec sapien cursus facilisis non ac tortor. Sed fermentum augue nec dictum vestibulum. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus lorem, non fringilla ipsum orci ut nulla. Nullam nec varius felis, nec efficitur ex. Vestibulum ultricies sapien eget velit aliquet, in faucibus odio venenatis. Donec a eros nec sapien cursus facilisis non ac tortor. Sed fermentum augue nec dictum vestibulum. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus lorem, non fringilla ipsum orci ut nulla. Nullam nec varius felis, nec efficitur ex. Vestibulum ultricies sapien eget velit aliquet, in faucibus odio venenatis. Donec a eros nec sapien cursus facilisis non ac tortor. Sed fermentum augue nec dictum vestibulum. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus lorem, non fringilla ipsum orci ut nulla. Nullam nec varius felis, nec efficitur ex. Vestibulum ultricies sapien eget velit aliquet, in faucibus odio venenatis. Donec a eros nec sapien cursus facilisis non ac tortor. Sed fermentum augue nec dictum vestibulum. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu. Sed tincidunt, nunc vel efficitur faucibus, ligula purus luctus"
-}
-
-###
 DELETE http://localhost:3000/hapus
 
 ###
-DELETE http://localhost:3000/hapus/66eee4cb9ca4eebe6de0c5f1
+DELETE http://localhost:3000/hapus/66f23844aeb8e0c947f08ef1
