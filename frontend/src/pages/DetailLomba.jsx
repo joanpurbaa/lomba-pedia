@@ -85,7 +85,13 @@ const DetailLomba = () => {
               </div>
               <div className="flex justify-between">
                 <p className="font-semibold">Deadline</p>
-                <p>{dataLomba.deadline}</p>
+                <p>
+                  {new Date(dataLomba.deadline).toLocaleDateString("id-ID", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
               </div>
               <div className="flex justify-between">
                 <p className="font-semibold">Pendaftaran</p>

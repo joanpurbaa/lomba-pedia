@@ -81,10 +81,12 @@ export const hapusLomba = async (req, res) => {
 
     const uploadFolder = `./../frontend/public/${data.poster}`;
 
-    fs.unlink(uploadFolder);
+    fs.unlink(uploadFolder, async (error) => {
+      if (error) return res.json(error);
 
-    await prisma.lomba.delete({
-      where: { id: req.params.lombaid },
+      await prisma.lomba.delete({
+        where: { id: req.params.lombaid },
+      });
     });
 
     res.sendStatus(200);

@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import DetailLomba from "./pages/DetailLomba";
 import UnggahLomba from "./pages/UnggahLomba";
@@ -11,6 +12,11 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
+  {
+    path: "/landingpage",
+    element: <LandingPage />,
+    errorElement: <NotFoundPage />,
+  },
   {
     path: "/",
     element: <Home />,
@@ -40,7 +46,7 @@ const customTheme = {
     field: {
       input: {
         colors: {
-          default:  
+          default:
             "border-transparent text-zinc-900 focus:border-transparent focus:ring-transparent",
         },
       },
