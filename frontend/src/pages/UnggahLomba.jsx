@@ -5,7 +5,6 @@ import {
   FileInput,
   TextInput,
   Textarea,
-  Spinner,
 } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
@@ -28,7 +27,6 @@ const UnggahLomba = () => {
   let [poster, setPoster] = useState(undefined);
   const [deskripsi, setDeskripsi] = useState();
   const [preview, setPreview] = useState();
-  const [loading, setLoading] = useState();
 
   const handleKategoriChange = (e) => {
     const { value, checked } = e.target;
@@ -122,13 +120,6 @@ const UnggahLomba = () => {
   return (
     <>
       <ToastContainer />
-      {loading ? (
-        <div className="fixed w-full h-screen flex justify-center items-center bg-gray-500 bg-opacity-40">
-          <Spinner className="absolute " aria-label="Default status example" />
-        </div>
-      ) : (
-        ""
-      )}
       <div className="min-h-dvh items-center text-white p-5">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-xl font-semibold">
