@@ -130,43 +130,42 @@ const UnggahLomba = () => {
           onSubmit={uploadData}
           encType="multipart/form-data"
         >
-          <div className="col-span-4 flex flex-col gap-y-5 w-full sm:h-[89vh]">
+          <div className="col-span-12 lg:col-span-4 flex flex-col gap-y-5 w-full h-[70vh] lg:h-[89vh]">
             <h2 className="text-xl font-semibold">Unggah poster lomba</h2>
             <Label
               htmlFor="dropzone-file"
-              className="flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 hover:bg-zinc-800"
+              className="flex flex-col justify-center items-center h-full w-full cursor-pointer rounded-lg border-2 border-dashed border-gray-300 hover:bg-zinc-800"
             >
-              <div className="flex flex-col items-center justify-center pb-6 pt-5">
-                <svg
-                  className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 16"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                  />
-                </svg>
-                <p className="mb-2 text-sm text-gray-400">
-                  <span className="font-semibold">Klik untuk mengupload</span>{" "}
-                  atau drag and drop
-                </p>
-                <p className="text-xs text-gray-400">PNG, JPG atau JPEG</p>
-                {preview ? (
-                  <img
-                    className="sm:h-[60%] mt-5"
-                    src={preview}
-                    alt="Preview"
-                  />
-                ) : (
-                  ""
-                )}
-              </div>
+              {preview ? (
+                <img
+                  className="h-full lg:h-[60%]"
+                  src={preview}
+                  alt="Preview"
+                />
+              ) : (
+                <>
+                  <svg
+                    className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 16"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                    />
+                  </svg>
+                  <p className="mb-2 text-sm text-gray-400">
+                    <span className="font-semibold">Klik untuk mengupload</span>{" "}
+                    atau drag and drop
+                  </p>
+                  <p className="text-xs text-gray-400">PNG, JPG atau JPEG</p>
+                </>
+              )}
               <FileInput
                 onChange={loadPoster}
                 id="dropzone-file"
@@ -175,7 +174,7 @@ const UnggahLomba = () => {
               />
             </Label>
           </div>
-          <div className="col-span-5">
+          <div className="col-span-12 lg:col-span-8 xl:col-span-5 mt-10">
             <h2 className="text-xl font-semibold">Isi deskripsi lomba</h2>
             <ul className="mt-3 flex flex-col gap-y-8">
               <li>
