@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Button,
-  Label,
-  FileInput,
-  TextInput,
-  Textarea,
-} from "flowbite-react";
+import { Button, Label, FileInput, TextInput, Textarea } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoCallOutline } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
@@ -108,9 +102,7 @@ const UnggahLomba = () => {
         formData.append("poster", file);
         formData.append("deskripsi", deskripsi);
 
-        await axios
-          .post("http://localhost:3000/tambahlomba", formData)
-          .then(() => setLoading(true));
+        await axios.post("http://localhost:3000/tambahlomba", formData);
 
         navigate("/");
       }
