@@ -344,9 +344,6 @@ const UnggahLomba = () => {
                 <label className="font-semibold" htmlFor="">
                   Deadline
                 </label>
-                <p className="text-gray-400 text-sm">
-                  Lomba akan dihapus tepat deadline pendaftaran ditutup
-                </p>
                 <input
                   className="text-zinc-900 mt-3 border-0 focus:ring-0 rounded-md"
                   type="date"
