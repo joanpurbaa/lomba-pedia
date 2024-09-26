@@ -97,6 +97,14 @@ const DetailLomba = () => {
                 <p className="font-semibold">Pendaftaran</p>
                 <p>{dataLomba.pendaftaran}</p>
               </div>
+              {dataLomba.biayaPendaftaran ? (
+                <div className="flex justify-between">
+                  <p className="font-semibold">Biaya pendaftaran</p>
+                  <p>{dataLomba.biayaPendaftaran}</p>
+                </div>
+              ) : (
+                ""
+              )}
               <div className="flex justify-between">
                 <p className="font-semibold">Tingkat</p>
                 <p>{dataLomba.tingkat}</p>

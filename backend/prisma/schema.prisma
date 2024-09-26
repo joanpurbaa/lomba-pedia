@@ -27,4 +27,5 @@ model lomba {
   urlPoster String
   poster String?
   deskripsi String
+  biayaPendaftaran String?
 }

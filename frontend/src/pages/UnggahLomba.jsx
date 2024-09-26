@@ -21,6 +21,7 @@ const UnggahLomba = () => {
   let [poster, setPoster] = useState(undefined);
   const [deskripsi, setDeskripsi] = useState();
   const [preview, setPreview] = useState();
+  const [biayaPendaftaran, setBiayaPendaftaran] = useState(false);
 
   const handleKategoriChange = (e) => {
     const { value, checked } = e.target;
@@ -101,6 +102,7 @@ const UnggahLomba = () => {
         formData.append("pendaftaran", biaya);
         formData.append("poster", file);
         formData.append("deskripsi", deskripsi);
+        formData.append("biayaPendaftaran", biayaPendaftaran);
 
         await axios.post("http://localhost:3000/tambahlomba", formData);
 
@@ -340,14 +342,14 @@ const UnggahLomba = () => {
                   </div>
                 </div>
               </li>
-              <li>
+              <li className="flex flex-col items-start">
                 <label className="font-semibold" htmlFor="">
                   Deadline
                 </label>
                 <input
                   className="text-zinc-900 mt-3 border-0 focus:ring-0 rounded-md"
                   type="date"
-                  onChange={(e) => setDeadline(e.target.value || null)}
+                  onChange={(e) => setDeadline(e.target.value)}
                 />
               </li>
               <li>
@@ -355,7 +357,7 @@ const UnggahLomba = () => {
                   Link pendaftaran lomba
                 </label>
                 <TextInput
-                  onChange={(e) => setLinkPendaftaran(e.target.value || null)}
+                  onChange={(e) => setLinkPendaftaran(e.target.value)}
                   color="default"
                   className="mt-3"
                   placeholder="https://dafarlombaposter..."
@@ -370,7 +372,7 @@ const UnggahLomba = () => {
                   Link narahubung berupa (WhatsApp/Telegram/Instagram)
                 </p>
                 <TextInput
-                  onChange={(e) => setNarahubung(e.target.value || null)}
+                  onChange={(e) => setNarahubung(e.target.value)}
                   color="default"
                   className="mt-3"
                   placeholder="https://wa.me/628**********"
@@ -503,7 +505,10 @@ const UnggahLomba = () => {
                 <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setBiaya("Berbayar")}
+                      onChange={() => {
+                        setBiaya("Berbayar");
+                        setBiayaPendaftaran(true);
+                      }}
                       className="rounded-full"
                       name="level"
                       id="berbayar"
@@ -513,7 +518,10 @@ const UnggahLomba = () => {
                   </div>
                   <div className="flex items-center gap-x-2">
                     <input
-                      onChange={() => setBiaya("Gratis")}
+                      onChange={() => {
+                        setBiaya("Gratis");
+                        setBiayaPendaftaran(false);
+                      }}
                       className="rounded-full"
                       name="level"
                       id="gratis"
@@ -523,12 +531,33 @@ const UnggahLomba = () => {
                   </div>
                 </div>
               </li>
+              {biayaPendaftaran ? (
+                <li>
+                  <label className="font-semibold" htmlFor="">
+                    Biaya pendaftaran
+                  </label>
+                  <p className="text-gray-400 text-sm">
+                    Masukkan nominal *contoh : Rp50.000
+                  </p>
+                  <TextInput
+                    onChange={(e) =>
+                      setBiayaPendaftaran(e.target.value)
+                    }
+                    color="default"
+                    className="mt-3"
+                    placeholder="Rp50.000"
+                    required
+                  ></TextInput>
+                </li>
+              ) : (
+                ""
+              )}
               <li>
                 <label className="font-semibold" htmlFor="">
                   Deskripsi lomba
                 </label>
                 <Textarea
-                  onChange={(e) => setDeskripsi(e.target.value || null)}
+                  onChange={(e) => setDeskripsi(e.target.value)}
                   color="default"
                   className="mt-3 resize-none"
                   rows={20}

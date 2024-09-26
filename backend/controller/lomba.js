@@ -54,6 +54,7 @@ export const tambahLomba = async (req, res) => {
         poster: posterName,
         urlPoster: urlPoster,
         deskripsi: req.body.deskripsi,
+        biayaPendaftaran: req.body.biayaPendaftaran,
       },
     });
 
