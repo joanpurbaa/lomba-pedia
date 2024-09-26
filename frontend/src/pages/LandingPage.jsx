@@ -22,7 +22,7 @@ const LandingPage = () => {
           <p className="text-white text-center text-sm sm:text-xl">
             Temukan Rahasia Menang Lomba di <b>Lomba Pedia!</b>
           </p>
-          <Link to="/">
+          <Link to="/home">
             <Button className="rounded-full" color="secondary" size="xl">
               See more
             </Button>
@@ -46,9 +46,9 @@ const LandingPage = () => {
                 portal untuk memudahkan informasi seputar perlombaan
               </q>
             </p>
-            <p className="italic mt-10">- Bob The Creator</p>
+            <p className="italic mt-10">- The Creator</p>
           </div>
-          <img className="w-72 rounded-lg" src="bob.jpg" alt="" />
+          <img className="w-full md:w-72 rounded-lg" src="joan.jpg" alt="" />
         </div>
         <div className="flex flex-col items-center w-full my-20">
           <h2 className="text-white text-xl md:text-4xl font-bold">

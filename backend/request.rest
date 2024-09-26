@@ -8,4 +8,4 @@ GET http://localhost:3000/tampilkanlombabyid/66dedd21e17a1c4498bca8f5
 DELETE http://localhost:3000/hapus
 
 ###
-DELETE http://localhost:3000/hapus/66f2604418e84a962d8e57f6
+DELETE http://localhost:3000/hapus/66f4b252f1e79c220c787c79

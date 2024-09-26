@@ -13,12 +13,12 @@ axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
   {
-    path: "/landingpage",
+    path: "/",
     element: <LandingPage />,
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/",
+    path: "/home",
     element: <Home />,
     errorElement: <NotFoundPage />,
   },
