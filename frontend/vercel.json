@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/https://lomba-pedia-api.vercel.app/(.*)",
+      "source": "/https://lomba-pedia-api.vercel.app/((?!general).*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
