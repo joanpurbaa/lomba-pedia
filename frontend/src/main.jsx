@@ -9,7 +9,7 @@ import "./index.css";
 import { Flowbite } from "flowbite-react";
 import axios from "axios";
 
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
   {
