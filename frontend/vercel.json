@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/https://lomba-pedia.vercel.app/(.*)",
+      "destination": "/https://lomba-pedia-api.vercel.app/"
     }
   ]
 }
