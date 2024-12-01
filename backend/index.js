@@ -7,12 +7,13 @@ import fileUpload from "express-fileupload";
 const app = express();
 const port = process.env.PORT;
 
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://lomba-pedia.vercel.app",
-  })
-);
+const corsOptions = {
+  credentials: true,
+  origin: "https://lomba-pedia.vercel.app",
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
