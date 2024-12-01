@@ -31,7 +31,7 @@ const DetailLomba = () => {
 
   useEffect(() => {
     fetch();
-  }, []);
+  });
   return (
     <>
       <div className="min-h-dvh items-center text-white p-5">
