@@ -20,7 +20,7 @@ const DetailLomba = () => {
   const fetch = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3000/tampilkanlombabyid/${lombaId}`
+        `https://lomba-pedia-api.vercel.app/${lombaId}`
       );
 
       setLomba(result.data);

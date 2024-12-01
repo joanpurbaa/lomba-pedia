@@ -9,7 +9,9 @@ const Home = () => {
 
   const fetch = async () => {
     try {
-      const result = await axios.get("http://localhost:3000/tampilkanlomba");
+      const result = await axios.get(
+        "https://lomba-pedia-api.vercel.app/tampilkanlomba"
+      );
 
       setLomba(result.data);
     } catch (error) {

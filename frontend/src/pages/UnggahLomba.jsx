@@ -104,7 +104,10 @@ const UnggahLomba = () => {
         formData.append("deskripsi", deskripsi);
         formData.append("biayaPendaftaran", biayaPendaftaran);
 
-        await axios.post("http://localhost:3000/tambahlomba", formData);
+        await axios.post(
+          "https://lomba-pedia-api.vercel.app/tambahlomba",
+          formData
+        );
 
         navigate("/");
       }
