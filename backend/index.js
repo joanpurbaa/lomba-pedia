@@ -9,7 +9,7 @@ const port = process.env.PORT;
 
 app.use(
   cors({
-    credentials: true,
+    credentials: false,
     origin: "https://lomba-pedia.vercel.app",
   })
 );
