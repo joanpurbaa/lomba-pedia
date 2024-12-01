@@ -10,7 +10,10 @@ const Home = () => {
   const fetch = async () => {
     try {
       const result = await axios.get(
-        "https://lomba-pedia-api.vercel.app/tampilkanlomba"
+        "https://lomba-pedia-api.vercel.app/tampilkanlomba",
+        {
+          withCredentials: true,
+        }
       );
 
       setLomba(result.data);
