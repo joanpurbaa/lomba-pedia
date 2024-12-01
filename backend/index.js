@@ -10,7 +10,7 @@ const port = process.env.PORT;
 app.use(
   cors({
     credentials: true,
-    origin: "https://lomba-pedia.vercel.app/",
+    origin: "https://lomba-pedia.vercel.app",
   })
 );
 app.use(express.json());
