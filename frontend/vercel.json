@@ -1,8 +1,8 @@
 {
   "headers": [
     {
-      "source": "/https://lomba-pedia-api.vercel.app/",
-      "destination": "/https://lomba-pedia.vercel.app/",
+      "source": "/https://lomba-pedia-api.vercel.app/tampilkanlomba",
+      "destination": "/https://lomba-pedia.vercel.app/home",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
